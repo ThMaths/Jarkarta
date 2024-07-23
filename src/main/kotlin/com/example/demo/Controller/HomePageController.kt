@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping
 class HomePageController(val matchService: MatchService) {
 
     //http://localhost:8080/home
-    @GetMapping("/home")
+    @GetMapping("/HomePage")
     fun homePage(model: Model) : String {
         model.addAttribute("allMatchs", matchService.getAll())
 

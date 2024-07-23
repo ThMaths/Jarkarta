@@ -9,13 +9,14 @@
 <body>
 <div class="login-container">
     <h2>Connexion</h2>
-    <form action="#" method="POST">
+    <form action="#" th:action="@{/login}" method="POST">
         <div class="input-group">
-            <label for="password">Mot de passe</label>
+            <label for="password">Mot de passe :</label>
             <input type="password" id="password" name="password" required>
         </div>
         <button type="submit">Se connecter</button>
     </form>
+    <p style="color:red;" th:if="${error}" th:text="${error}"></p>
 </div>
 </body>
 </html>
