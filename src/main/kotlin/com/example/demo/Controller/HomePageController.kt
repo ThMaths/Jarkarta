@@ -1,11 +1,12 @@
 package com.example.demo.Controller
 
 import com.example.demo.Service.MatchService
+import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
-@RestController
+@Controller
 class HomePageController(val matchService: MatchService) {
 
     //http://localhost:8080/home
@@ -14,5 +15,10 @@ class HomePageController(val matchService: MatchService) {
         model.addAttribute("allMatchs", matchService.getAll())
 
         return "homePage"
+    }
+    //http://localhost:8080/home
+    @GetMapping("/homeS") //Affiche la page résultat
+    fun home(): String {
+        return "homePage" //Lance homePage.html
     }
 }

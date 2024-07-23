@@ -8,34 +8,20 @@
 <body>
 <div class="bg">
     <div class="ctr">
-        <div class="card">
-            <h1>aa</h1>
-        </div>
-        <hr class="rounded">
-        <div class="card">
-            <h1>aa</h1>
-        </div>
-        <hr class="rounded">
-        <div class="card">
-            <h1>aa</h1>
-        </div>
-        <hr class="rounded">
-        <div class="card">
-            <h1>aa</h1>
-        </div>
-        <hr class="rounded">
-        <div class="card">
-            <h1>aa</h1>
-        </div>
-        <hr class="rounded">
-        <div class="card">
-            <h1>aa</h1>
-        </div>
-        <hr class="rounded">
-        <div class="card">
-            <h1>aa</h1>
-        </div>
 
+        <div th:each="match, stat : ${allMatchs}">
+            <div class="card">
+                <div class="match-info">
+                    <span th:text="${match.nomEquipe1}">Nom Equipe 1</span>
+                    <span th:text="' ' + ${match.scoreEquipe1} + ' - ' + ${match.scoreEquipe2} + ' '">Scores</span>
+                    <span th:text="${match.nomEquipe2}">Nom Equipe 2</span>
+                </div>
+
+                <div class="status" th:text="${match.fini == 1 ? 'Match fini' : 'Match en cours'}"></div>
+
+            </div>
+            <hr class="rounded" th:if="${!stat.last}"/>
+        </div>
 
     </div>
 </div>
