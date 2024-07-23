@@ -6,13 +6,13 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 
 @Controller
-class HomePageController(val matchService: MatchService) {
+class AdminPageController (val matchService: MatchService){
 
-    //http://localhost:8080/home
-    @GetMapping("/home")
-    fun homePage(model: Model) : String {
+    //http://localhost:8080/adminPage
+    @GetMapping("/admin")
+    fun adminPage(model: Model) : String {
         model.addAttribute("allMatchs", matchService.getAll())
 
-        return "homePage"
+        return "adminPage"
     }
 }
