@@ -87,6 +87,12 @@ class MyController {
 
     @GetMapping("/formResult") //Affiche la page résultat
     fun formResult(): String {
-        return "studentFormResult" //Lance studentForm.html
+        return "studentForm" //Lance studentForm.html
+    }
+
+    //http://localhost:8080/home
+    @GetMapping("/home") //Affiche la page résultat
+    fun home(): String {
+        return "homePage" //Lance homePage.html
     }
 }

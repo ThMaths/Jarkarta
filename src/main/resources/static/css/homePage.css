@@ -1,0 +1,38 @@
+body, html {
+    height: 100%;
+    margin: 0px;
+    overflow: hidden !important;
+}
+.bg{
+    height: 100%;
+    background-image: url("../img/homeBackground.jpg");
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+
+}
+.ctr{
+    top: 5%;
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+}
+
+/* Glassmorphism card effect */
+.card {
+    backdrop-filter: blur(20px) saturate(100%);
+    -webkit-backdrop-filter: blur(20px) saturate(100%);
+    background-color: rgba(17, 25, 40, 0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+/* Solid border */
+hr.rounded {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 2px solid #eeeeee;
+    width: 90%;
+}
