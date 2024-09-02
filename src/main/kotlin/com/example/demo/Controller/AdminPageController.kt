@@ -3,6 +3,7 @@ package com.example.demo.Controller
 import com.example.demo.Service.MatchService
 import jakarta.servlet.http.HttpSession
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
 
@@ -12,7 +13,8 @@ class AdminPageController (val matchService: MatchService){
 
     //http://localhost:8080/adminPage
     @GetMapping("/adminPage")
-    fun showAdminPage( redirectAttributes: RedirectAttributes, session: HttpSession): String {
+    fun showAdminPage( redirectAttributes: RedirectAttributes, session: HttpSession, model: Model): String {
+        model.addAttribute("allMatchs", matchService.getAll())
         return if (session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn") as Boolean) {
             "adminPage"
         } else {
