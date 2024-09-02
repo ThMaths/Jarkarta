@@ -2,10 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin Page</title>
     <link href="/css/homePage.css" rel="stylesheet"/>
     <style>
-        /* Style pour aligner le bouton en haut à droite */
         .login-button {
             position: absolute;
             top: 10px;
@@ -16,17 +15,82 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            text-decoration: none; /* pour les liens */
+            text-decoration: none;
+        }
+
+        .crud-button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-button {
+            background-color: #dc3545; /* Red background for delete button */
+            margin-left: 10px; /* Margin to separate from the update button */
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            backdrop-filter: blur(20px) saturate(100%);
+            -webkit-backdrop-filter: blur(20px) saturate(100%);
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container select {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #eeeeee;
+            font-size: 16px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .button-container button {
+            width: auto;
         }
     </style>
 </head>
 <body>
 <div class="bg">
-    <!-- Bouton "Se déconnecter" en haut à droite -->
     <a href="/logout" class="login-button">Se déconnecter</a>
 
     <div class="ctr">
+        <!-- Form to Add a New Match -->
+        <div class="form-container">
+            <form action="/addMatch" method="post">
+                <input type="text" name="nomEquipe1" placeholder="Nom Equipe 1" required>
+                <input type="number" name="scoreEquipe1" placeholder="Score Equipe 1" required>
+                <input type="text" name="nomEquipe2" placeholder="Nom Equipe 2" required>
+                <input type="number" name="scoreEquipe2" placeholder="Score Equipe 2" required>
+                <select name="fini" required>
+                    <option value="0">En cours</option>
+                    <option value="1">Terminé</option>
+                </select>
+                <button type="submit" class="crud-button">Ajouter Match</button>
+            </form>
+        </div>
 
+        <!-- List of Matches with Update and Delete Options -->
         <div th:each="match, stat : ${allMatchs}">
             <div class="card">
                 <div class="match-info">
@@ -34,15 +98,39 @@
                     <span th:text="' ' + ${match.scoreEquipe1} + ' - ' + ${match.scoreEquipe2} + ' '">Scores</span>
                     <span th:text="${match.nomEquipe2}">Nom Equipe 2</span>
                 </div>
-
                 <div class="status" th:text="${match.fini == 1 ? 'Match fini' : 'Match en cours'}"></div>
 
+                <!-- Form to Update a Match -->
+                <div class="form-container">
+                    <form action="/updateMatch" method="post">
+                        <input type="hidden" name="id" th:value="${match.id}">
+                        <input type="text" name="nomEquipe1" th:value="${match.nomEquipe1}" required>
+                        <input type="number" name="scoreEquipe1" th:value="${match.scoreEquipe1}" required>
+                        <input type="text" name="nomEquipe2" th:value="${match.nomEquipe2}" required>
+                        <input type="number" name="scoreEquipe2" th:value="${match.scoreEquipe2}" required>
+                        <select name="fini" required>
+                            <option th:value="0" th:text="'En cours'" th:selected="${match.fini == 0}"></option>
+                            <option th:value="1" th:text="'Terminé'" th:selected="${match.fini == 1}"></option>
+                        </select>
+
+                        <!-- Update Button -->
+                        <div class="button-container">
+                            <button type="submit" class="crud-button">Mettre à Jour</button>
+                        </div>
+                    </form>
+
+                    <!-- Form to Delete a Match -->
+                    <form action="/deleteMatch" method="post" style="display:inline;">
+                        <input type="hidden" name="id" th:value="${match.id}">
+                        <div class="button-container">
+                            <button type="submit" class="crud-button delete-button">Supprimer</button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <hr class="rounded" th:if="${!stat.last}"/>
         </div>
-
     </div>
 </div>
-
 </body>
 </html>
