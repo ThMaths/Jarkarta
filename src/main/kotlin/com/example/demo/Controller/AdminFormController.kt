@@ -32,4 +32,10 @@ class AdminFormController {
             return "login"
         }
     }
+
+    @GetMapping("/logout")
+    fun handleLogout(session: HttpSession, model: Model): String {
+        session.setAttribute("loggedIn", false)
+        return "redirect:/HomePage"
+    }
 }
