@@ -140,3 +140,11 @@ hr.rounded {
 .button-container button {
     width: auto;
 }
+
+::placeholder {
+    color: white;
+    opacity: 0.6;
+}
+.options{
+    color: black;
+}
