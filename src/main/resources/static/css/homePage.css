@@ -22,6 +22,21 @@ body, html {
     padding: 20px;
 }
 
+/* Custom Scrollbar */
+.ctr::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ctr::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2); /* Light translucent thumb */
+    border-radius: 10px;
+    backdrop-filter: blur(5px); /* Blur effect on the thumb */
+}
+
+.ctr::-webkit-scrollbar-track {
+    background: transparent; /* Fully transparent track */
+}
+
 /* Glassmorphism card effect */
 .card {
     backdrop-filter: blur(20px) saturate(100%);
