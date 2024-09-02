@@ -3,15 +3,16 @@ body, html {
     margin: 0px;
     overflow: hidden !important;
 }
-.bg{
+
+.bg {
     height: 100%;
     background-image: url("../img/homeBackground.jpg");
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.ctr{
+
+.ctr {
     top: 5%;
     position: relative;
     width: 800px;
@@ -29,7 +30,8 @@ body, html {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.125);
 }
-.match-info{
+
+.match-info {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
@@ -37,6 +39,7 @@ body, html {
     width: 100%;
     margin: 10px;
 }
+
 .status {
     color: #eeeeee;
     margin-top: 10px;
@@ -44,6 +47,7 @@ body, html {
     text-align: center;
     grid-column: span 3;
 }
+
 /* Solid border */
 hr.rounded {
     margin-top: 10px;
@@ -51,8 +55,73 @@ hr.rounded {
     border-top: 2px solid #eeeeee;
     width: 90%;
 }
-.match-info span{
+
+.match-info span {
     color: #eeeeee;
     font-size: 32px;
     margin: 0 40px;
+}
+
+.login-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.crud-button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red background for delete button */
+    margin-left: 10px; /* Margin to separate from the update button */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    backdrop-filter: blur(20px) saturate(100%);
+    -webkit-backdrop-filter: blur(20px) saturate(100%);
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container select {
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #eeeeee;
+    font-size: 16px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.button-container button {
+    width: auto;
 }
