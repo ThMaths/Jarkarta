@@ -44,8 +44,8 @@
                         <input type="text" name="nomEquipe2" th:value="${match.nomEquipe2}" required>
                         <input type="number" name="scoreEquipe2" th:value="${match.scoreEquipe2}" required>
                         <select name="fini" required>
-                            <option th:value="0" th:text="'En cours'" th:selected="${match.fini == 0}"></option>
-                            <option th:value="1" th:text="'Terminé'" th:selected="${match.fini == 1}"></option>
+                            <option class="options" th:value="0" th:text="'En cours'" th:selected="${match.fini == 0}"></option>
+                            <option class="options" th:value="1" th:text="'Terminé'" th:selected="${match.fini == 1}"></option>
                         </select>
 
                         <!-- Update Button -->
