@@ -16,9 +16,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes
 class AdminPageController(private val matchService: MatchService) {
 
     @GetMapping("/adminPage")
-    fun showAdminPage(model: Model): String {
-        model.addAttribute("allMatchs", matchService.getAll())
-        return "adminPage"
+    fun showAdminPage(model: Model, session: HttpSession): String {
+        if (session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn") as Boolean){
+            model.addAttribute("allMatchs", matchService.getAll())
+            return "adminPage"
+        }
+        else
+            return "redirect:/adminForm"
     }
 
     @PostMapping("/addMatch")
